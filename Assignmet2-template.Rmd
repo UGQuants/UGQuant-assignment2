@@ -4,12 +4,18 @@ author: "[Your student number here]"
 date: "[Date]"
 output: html_document
 ---
+<!-- This is a suggested template to write Assignment 2. Feel free to make changes as appropriate according to the guidance. -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message=FALSE, warning=FALSE)
 ```
 
 ```{r preamble, include=FALSE}
+# Install packages if missing
+list.of.packages <- c("tidyverse", "stargazer")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+# Load packages
 library(tidyverse)
 library(stargazer)
 
@@ -19,17 +25,17 @@ nilt <- readRDS("data/fullnilt_2012.rds")
 
 
 # Introduction
-<!-- Word count: approx. 300  -->
+<!-- Word count: approx. 400  -->
 <!-- Look at the model in part 2 below. Based on this state a research question and a hypothesis. Remember a hypothesis needs at least two variables. -->
 
 
-# Part 1: Data and Method
-<!-- Word count: approx. 1000 -->
+# Data and method
+<!-- Word count: approx. 800 -->
 <!-- In this section your goal is to demonstrate that you can describe data and that you understand research design and data collection. -->
 
 
-# Part 2: Results
-<!-- Word count: approx. 1200 -->
+# Results and discussion
+<!-- Word count: approx. 1300 -->
 <!-- In this section your goal is to demonstrate that you can interpret quantitative results. Additional credit is available if you are able to relate these findings to social science theories or if you can put the findings in context. -->
 
 
@@ -60,4 +66,4 @@ stargazer(model,
 
 # Conclusion
 <!-- Word count: approx. 500 -->
-<!-- Clearly state your findings. Do the findings raise any questions for future research? The tone you are trying to achieve here is one of a confident researcher. -->
+<!-- Clearly state your findings. Do the findings raise any questions for future research? -->
