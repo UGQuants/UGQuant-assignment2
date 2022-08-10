@@ -1,0 +1,63 @@
+---
+title: 'Assignment 2: Interpreting Quantitative Findings'
+author: "[Your student number here]"
+date: "[Date]"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message=FALSE, warning=FALSE)
+```
+
+```{r preamble, include=FALSE}
+library(tidyverse)
+library(stargazer)
+
+# Read data
+nilt <- readRDS("data/fullnilt_2012.rds")
+```
+
+
+# Introduction
+<!-- Word count: approx. 300  -->
+<!-- Look at the model in part 2 below. Based on this state a research question and a hypothesis. Remember a hypothesis needs at least two variables. -->
+
+
+# Part 1: Data and Method
+<!-- Word count: approx. 1000 -->
+<!-- In this section your goal is to demonstrate that you can describe data and that you understand research design and data collection. -->
+
+
+# Part 2: Results
+<!-- Word count: approx. 1200 -->
+<!-- In this section your goal is to demonstrate that you can interpret quantitative results. Additional credit is available if you are able to relate these findings to social science theories or if you can put the findings in context. -->
+
+
+```{r, echo = FALSE, results='asis'}
+# This chunk will run the linear regression and print the output
+# run model
+model <- lm(persinc2 ~ rsex + religcat + orient + uninatid + tunionsa + rsuper + rage, data = nilt)
+# Set name of variables
+cov_labels <-
+  c('Sex: Female (ref.: Male)', 'Religion: Protestant (ref.: Catholic)', 'Religion: No religion', 
+    'Sexual Orientation: Homosexual (ref.: Heterosexual)', 'Sexual Orientation: bi-sexual', 'Sexual Orientation: Other',
+    'Constitutional View: Nationalist (ref.: Unionist)', 'Constitutional view: Neither',
+    'Trade union membership: No (ref.: Yes)', 'Supervisor: No (ref.: Yes)', 'Age', 'Constant')
+# Print result
+stargazer(model,
+          style = "ajs",
+          type = 'html',
+          title = "Regression results", 
+          header = TRUE,
+          single.row = FALSE,
+          covariate.labels = cov_labels,
+          dep.var.caption  = "Dependent Variable",
+          dep.var.labels   = "Annual Personal Income (GBP)")
+```
+
+
+
+
+# Conclusion
+<!-- Word count: approx. 500 -->
+<!-- Clearly state your findings. Do the findings raise any questions for future research? The tone you are trying to achieve here is one of a confident researcher. -->
