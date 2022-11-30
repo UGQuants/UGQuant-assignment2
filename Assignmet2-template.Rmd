@@ -12,9 +12,11 @@ knitr::opts_chunk$set(message=FALSE, warning=FALSE)
 
 ```{r preamble, include=FALSE}
 # Install packages if missing
-list.of.packages <- c("tidyverse", "stargazer")
+list.of.packages <- c("tidyverse", "stargazer", "devtools")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
+# Wordcount addin
+devtools::install_github("benmarwick/wordcountaddin", type = "source", dependencies = TRUE)
 # Load packages
 library(tidyverse)
 library(stargazer)
@@ -22,7 +24,7 @@ library(stargazer)
 # Read data
 nilt <- readRDS("data/fullnilt_2012.rds")
 ```
-
+Word count: `r wordcountaddin::word_count("Assignmet2-template.Rmd") - 10`
 
 # Introduction
 <!-- Word count: approx. 400  -->
